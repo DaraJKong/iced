@@ -1,4 +1,7 @@
-use iced::{widget::text_input, Element, Sandbox, Settings};
+use iced::{
+    widget::{container, text_input},
+    Element, Length, Sandbox, Settings,
+};
 
 fn main() -> iced::Result {
     App::run(Settings::default())
@@ -23,7 +26,7 @@ impl Sandbox for App {
     }
 
     fn title(&self) -> String {
-        String::from("buggy_text_input")
+        String::from("buggy_text_selection")
     }
 
     fn update(&mut self, message: Message) {
@@ -35,9 +38,15 @@ impl Sandbox for App {
     }
 
     fn view(&self) -> Element<Message> {
-        text_input("placeholder", &self.content)
-            .on_input(Message::ContentChanged)
-            .size(50)
-            .into()
+        container(
+            text_input("placeholder", &self.content)
+                .on_input(Message::ContentChanged)
+                .width(Length::Fixed(200.0))
+                .size(25),
+        )
+        .width(Length::Fill)
+        .center_x()
+        .padding(50)
+        .into()
     }
 }

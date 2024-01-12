@@ -1,5 +1,5 @@
 [package]
-name = "buggy_text_input"
+name = "buggy_text_selection"
 version = "0.1.0"
 authors = ["DaraJKong <daraetkong@gmail.com>"]
 edition = "2021"
